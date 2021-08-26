@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Image Altration Detector</title>
+{% endblock %}
+
+{% block content %}
+
+<!-- ======= Header ======= -->
+<header id="header">
+  <div class="container">
+
+    <div id="logo" class="pull-left">
+      <!-- Uncomment below if you prefer to use a text logo -->
+      <!-- <h1><a href="#intro">The<span>Event</span></a></h1>-->
+      <a href="{% url 'home' %}" class="scrollto"><i class="fas fa-infinity"></i> IMAGE ALTRATION DETECTOR</a>
+    </div>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        <li class="menu-active"><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'upload' %}">Upload</a></li>
+        <li><a href="{% url 'home' %}">About</a></li>
+      </ul>
+    </nav><!-- #nav-menu-container -->
+  </div>
+</header><!-- End Header -->
+
+  <!-- ======= Intro Section ======= -->
+  <section id="intro" data-aos="zoom-out">
+    <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
+      <h1 class="mb-4 pb-0">Image<br><span>Altration</span> Detector</h1>
+      <p class="mb-4 pb-0">Metadata, AI and Error Level Analysis</p>
+      <a href="{% url 'upload' %}">
+        <p class="about-btn scrollto">Get Started</p>
+      </a>
+    </div>
+  </section><!-- End Intro Section -->
+
+  {% endblock %}
+
+ 

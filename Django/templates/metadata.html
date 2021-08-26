@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Metadata</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+<link href="{% static 'assets/css/upload.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<!-- ======= Header ======= -->
+<header id="header">
+    <div class="container">
+  
+      <div id="logo" class="pull-left">
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!-- <h1><a href="#intro">The<span>Event</span></a></h1>-->
+        <a href="{% url 'home' %}" class="scrollto"><i class="fas fa-infinity"></i> IMAGE ALTRATION DETECTOR</a>
+      </div>
+  
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'upload_with_image' image.id %}">Upload</a></li>
+          <li><a href="{% url 'home' %}">About</a></li>
+
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- End Header -->
+
+<!-- ======= Intro Section ======= -->
+<section id="intro" data-aos="zoom-out">
+    <div class="container justify-content-center" data-aos="zoom-out" data-aos-delay="100">
+
+        <!-- <div class="row justify-content-center">
+        <div class="head col text-center">
+            <h3 class="head-text mx-auto">METADATA</h3>
+        </div>
+        </div> -->
+
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="card text-center">
+                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                    <div class="container-fluid">
+                        <div class="card-body">
+                            {% if image %}
+                            <h1 class="card-title text-center title head-text">METADATA</h1>
+                            <img class="mt-3 col-lg-7 col-md-7 col-sm-7 col-xs-5 img" src="{{ image.image.url }}"
+                                alt="{{ image.image.url }}">
+                            {% else %}
+                            <h1 class="card-title text-center title">No Image</h1>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                {% if metadata_found %}
+                    {% if not altered %}
+                    <div class="alert alert-success" role="alert">
+                      The <b>Image is Not Edited</b> According to Metadata!
+                    </div>
+                    {% else %}
+                    <div class="alert alert-danger" role="alert">
+                      The <b>Image is Edited</b> According to Metadata!
+                    </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 metadata">
+                <div class="scrollspy-example container-fluid">
+                    <br>
+                    <h4 id="metadata">METADATA</h4>
+                    
+                    <p class="metadata-text">{{ metadata|safe }}</p>
+                    
+                  </div>
+            </div>
+        </div>
+
+        <div class="container text-center mt-5 disabled">
+            
+        </div>
+
+    </div>
+
+    
+
+</section><!-- End Intro Section -->
+
+{% endblock %}
